@@ -1,0 +1,281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B1787622180F554800ECCE22 /* graphics1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B1787621180F554800ECCE22 /* graphics1.cpp */; };
+		CF2A2F941A06E0810007FD86 /* Circle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2A2F921A06E0810007FD86 /* Circle.cpp */; };
+		CF2A2F971A06E0D70007FD86 /* Triangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2A2F951A06E0D70007FD86 /* Triangle.cpp */; };
+		CF2A2F9A1A06E0E40007FD86 /* Rectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2A2F981A06E0E40007FD86 /* Rectangle.cpp */; };
+		CF2A2F9D1A06E1380007FD86 /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2A2F9B1A06E1380007FD86 /* Button.cpp */; };
+		CF34A09319FEFA6E00C95A99 /* Shape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34A09119FEFA6E00C95A99 /* Shape.cpp */; };
+		CFDA01BF1A41DD6300A71407 /* Pentagon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDA01BD1A41DD6300A71407 /* Pentagon.cpp */; };
+		D3EA612114BF56F5003EF908 /* MacGraphicsStarter.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EA612014BF56F5003EF908 /* MacGraphicsStarter.1 */; };
+		D3EA612914BF5760003EF908 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EA612714BF5760003EF908 /* GLUT.framework */; };
+		D3EA612A14BF5760003EF908 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EA612814BF5760003EF908 /* OpenGL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D3EA611814BF56F5003EF908 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				D3EA612114BF56F5003EF908 /* MacGraphicsStarter.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B1787621180F554800ECCE22 /* graphics1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = graphics1.cpp; sourceTree = "<group>"; };
+		CF2A2F921A06E0810007FD86 /* Circle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Circle.cpp; sourceTree = "<group>"; };
+		CF2A2F931A06E0810007FD86 /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circle.h; sourceTree = "<group>"; };
+		CF2A2F951A06E0D70007FD86 /* Triangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Triangle.cpp; sourceTree = "<group>"; };
+		CF2A2F961A06E0D70007FD86 /* Triangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Triangle.h; sourceTree = "<group>"; };
+		CF2A2F981A06E0E40007FD86 /* Rectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rectangle.cpp; sourceTree = "<group>"; };
+		CF2A2F991A06E0E40007FD86 /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
+		CF2A2F9B1A06E1380007FD86 /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Button.cpp; sourceTree = "<group>"; };
+		CF2A2F9C1A06E1380007FD86 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
+		CF34A09119FEFA6E00C95A99 /* Shape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shape.cpp; sourceTree = "<group>"; };
+		CF34A09219FEFA6E00C95A99 /* Shape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shape.h; sourceTree = "<group>"; };
+		CFDA01BD1A41DD6300A71407 /* Pentagon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pentagon.cpp; sourceTree = "<group>"; };
+		CFDA01BE1A41DD6300A71407 /* Pentagon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pentagon.h; sourceTree = "<group>"; };
+		D3EA611A14BF56F5003EF908 /* MacGraphicsStarter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MacGraphicsStarter; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3EA612014BF56F5003EF908 /* MacGraphicsStarter.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = MacGraphicsStarter.1; sourceTree = "<group>"; };
+		D3EA612714BF5760003EF908 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		D3EA612814BF5760003EF908 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3EA611714BF56F5003EF908 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3EA612914BF5760003EF908 /* GLUT.framework in Frameworks */,
+				D3EA612A14BF5760003EF908 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D355F37714BF71440064E474 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3EA612714BF5760003EF908 /* GLUT.framework */,
+				D3EA612814BF5760003EF908 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3EA610F14BF56F5003EF908 = {
+			isa = PBXGroup;
+			children = (
+				D3EA611D14BF56F5003EF908 /* MacGraphicsStarter */,
+				D355F37714BF71440064E474 /* Frameworks */,
+				D3EA611B14BF56F5003EF908 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D3EA611B14BF56F5003EF908 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3EA611A14BF56F5003EF908 /* MacGraphicsStarter */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3EA611D14BF56F5003EF908 /* MacGraphicsStarter */ = {
+			isa = PBXGroup;
+			children = (
+				B1787621180F554800ECCE22 /* graphics1.cpp */,
+				CF2A2F9B1A06E1380007FD86 /* Button.cpp */,
+				CF2A2F9C1A06E1380007FD86 /* Button.h */,
+				CF2A2F951A06E0D70007FD86 /* Triangle.cpp */,
+				CF2A2F961A06E0D70007FD86 /* Triangle.h */,
+				CF2A2F981A06E0E40007FD86 /* Rectangle.cpp */,
+				CFDA01BD1A41DD6300A71407 /* Pentagon.cpp */,
+				CFDA01BE1A41DD6300A71407 /* Pentagon.h */,
+				CF2A2F991A06E0E40007FD86 /* Rectangle.h */,
+				CF2A2F921A06E0810007FD86 /* Circle.cpp */,
+				CF2A2F931A06E0810007FD86 /* Circle.h */,
+				CF34A09119FEFA6E00C95A99 /* Shape.cpp */,
+				CF34A09219FEFA6E00C95A99 /* Shape.h */,
+				D3EA612014BF56F5003EF908 /* MacGraphicsStarter.1 */,
+			);
+			path = MacGraphicsStarter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D3EA611914BF56F5003EF908 /* MacGraphicsStarter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3EA612414BF56F5003EF908 /* Build configuration list for PBXNativeTarget "MacGraphicsStarter" */;
+			buildPhases = (
+				D3EA611614BF56F5003EF908 /* Sources */,
+				D3EA611714BF56F5003EF908 /* Frameworks */,
+				D3EA611814BF56F5003EF908 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacGraphicsStarter;
+			productName = MacGraphicsStarter;
+			productReference = D3EA611A14BF56F5003EF908 /* MacGraphicsStarter */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3EA611114BF56F5003EF908 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+			};
+			buildConfigurationList = D3EA611414BF56F5003EF908 /* Build configuration list for PBXProject "MacGraphicsStarter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D3EA610F14BF56F5003EF908;
+			productRefGroup = D3EA611B14BF56F5003EF908 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3EA611914BF56F5003EF908 /* MacGraphicsStarter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3EA611614BF56F5003EF908 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1787622180F554800ECCE22 /* graphics1.cpp in Sources */,
+				CFDA01BF1A41DD6300A71407 /* Pentagon.cpp in Sources */,
+				CF2A2F941A06E0810007FD86 /* Circle.cpp in Sources */,
+				CF34A09319FEFA6E00C95A99 /* Shape.cpp in Sources */,
+				CF2A2F9A1A06E0E40007FD86 /* Rectangle.cpp in Sources */,
+				CF2A2F971A06E0D70007FD86 /* Triangle.cpp in Sources */,
+				CF2A2F9D1A06E1380007FD86 /* Button.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D3EA612214BF56F5003EF908 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D3EA612314BF56F5003EF908 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D3EA612514BF56F5003EF908 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D3EA612614BF56F5003EF908 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3EA611414BF56F5003EF908 /* Build configuration list for PBXProject "MacGraphicsStarter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3EA612214BF56F5003EF908 /* Debug */,
+				D3EA612314BF56F5003EF908 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3EA612414BF56F5003EF908 /* Build configuration list for PBXNativeTarget "MacGraphicsStarter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3EA612514BF56F5003EF908 /* Debug */,
+				D3EA612614BF56F5003EF908 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D3EA611114BF56F5003EF908 /* Project object */;
+}
