@@ -1,0 +1,74 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		CF0241D11A36A40900ECCB6B /* babbler.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = babbler.cpp; sourceTree = "<group>"; };
+		CF0241D21A36A40900ECCB6B /* babbler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = babbler.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		CF0241CA1A33A26C00ECCB6B = {
+			isa = PBXGroup;
+			children = (
+				CF0241D11A36A40900ECCB6B /* babbler.cpp */,
+				CF0241D21A36A40900ECCB6B /* babbler.h */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		CF0241CB1A33A26C00ECCB6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+			};
+			buildConfigurationList = CF0241CE1A33A26C00ECCB6B /* Build configuration list for PBXProject "Babbler" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF0241CA1A33A26C00ECCB6B;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		CF0241CF1A33A26C00ECCB6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		CF0241D01A33A26C00ECCB6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF0241CE1A33A26C00ECCB6B /* Build configuration list for PBXProject "Babbler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF0241CF1A33A26C00ECCB6B /* Debug */,
+				CF0241D01A33A26C00ECCB6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CF0241CB1A33A26C00ECCB6B /* Project object */;
+}
