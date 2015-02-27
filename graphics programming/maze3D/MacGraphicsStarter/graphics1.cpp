@@ -72,16 +72,6 @@ void display(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     double dt = GetDeltaTime();
     maze.draw();
-   /* //adds numbers to maze for each wall removed
-    for (int i=0; i<COL; i++)
-    {
-        for (int j=0; j<ROW; j++)
-        {
-          //  std::cout<<number<<std::endl;
-            DrawText(i, j, &maze.mCell[i][j].num);
-        }
-    }
-    */
     //if in perspective view
     //glLookAt(x,y,z x,y,z x,y,z);
     //glEndable(GL_DEPTH_TEST):
