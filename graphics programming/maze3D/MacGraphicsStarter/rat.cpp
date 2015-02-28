@@ -29,20 +29,18 @@ void DrawTriangle(double x1, double y1, double x2, double y2, double x3, double 
     glVertex2d(x3,y3);
     glEnd();
 }
-void DrawRectangle(double x1, double y1, double x2, double y2)
-{
-    glBegin(GL_QUADS);
-    glVertex2d(x1,y1);
-    glVertex2d(x2,y1);
-    glVertex2d(x2,y2);
-    glVertex2d(x1,y2);
-    glEnd();
-}
+
 double Rat::get_x(){
     return mX;
 }
 double Rat::get_y(){
     return mY;
+}
+double Rat::get_dx(){
+    return dx;
+}
+double Rat::get_dy(){
+    return dy;
 }
 
 
@@ -53,8 +51,12 @@ Rat::Rat()
     mDegrees = 0;
     mRadius = .4;
 }
-void Rat::draw()
+void Rat::draw(Maze &maze)
 {
+    if(maze.current_view == maze.rat_view)
+    {
+        return; // drawing yourself in rat view looks bad.
+    }
     glPushMatrix();
     
     glTranslated(mX, mY, 0.0);//3rd
@@ -83,8 +85,8 @@ void Rat::draw()
 void Rat::scurry(double dt, Maze &maze)
 {
     double radians = mDegrees * M_PI / 180;
-    double dx = cos(radians) * dt * SCURRY_SPEED;
-    double dy = sin(radians) * dt * SCURRY_SPEED;
+    dx = cos(radians) * dt * SCURRY_SPEED;
+    dy = sin(radians) * dt * SCURRY_SPEED;
     if (maze.isSafe(mX+dx, mY+dy, mRadius))
     {
         mX += dx;

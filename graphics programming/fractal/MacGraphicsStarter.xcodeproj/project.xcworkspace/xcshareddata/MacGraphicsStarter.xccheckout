@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4A744205-5A5E-49E5-B0BA-FEBA619F671F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MacGraphicsStarter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E5DE2E8A566997D3D05792DD383825F6726A2723</key>
+		<string>https://github.com/codybrowncit/C-plus-plus.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>graphics programming/fractal/MacGraphicsStarter.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E5DE2E8A566997D3D05792DD383825F6726A2723</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/codybrowncit/C-plus-plus.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E5DE2E8A566997D3D05792DD383825F6726A2723</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E5DE2E8A566997D3D05792DD383825F6726A2723</string>
+			<key>IDESourceControlWCCName</key>
+			<string>C-plus-plus</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -27,16 +27,18 @@ class Rat
 {
 public:
     Rat();
-    void draw();
+    void draw(Maze &maze);
     void scurry(double dt, Maze &maze);
     void turnLeft(double dt);
     void turnRight(double dt);
     double get_x();
     double get_y();
+    double get_dx();
+    double get_dy();
     
     
 private:
-    double mX, mY, mDegrees, mRadius;
+    double dx, dy, mX, mY, mDegrees, mRadius;
     Maze *mMaze;
 
     

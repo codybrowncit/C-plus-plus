@@ -1,4 +1,4 @@
-#include "maze.h"
+
 #include "rat.h"
 #include <cmath>
 #include <cstring>
@@ -7,22 +7,38 @@
 
 
 // Global Variables (Only what you need!)
-double screen_x = 700;
-double screen_y = 500;
+double screen_x = 900;
+double screen_y = 900;
 Maze maze;
 Rat rat;
 bool left_button_down = false;
 bool middle_button_down = false;
 bool right_button_down = false;
-void drawRectangle(double x1, double y1, double x2, double y2)
+
+void SetTopView(int w, int h)
 {
-    glBegin(GL_QUADS);
-    glVertex2d(x1,y1);
-    glVertex2d(x2,y1);
-    glVertex2d(x2,y2);
-    glVertex2d(x1,y2);
-    glEnd();
+    // go into 2D mode
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    double world_margin_x = 1.5;
+    double world_margin_y = 1.5;
+    gluOrtho2D(-world_margin_x, ROW+world_margin_x,
+               -world_margin_y, COL+world_margin_y);
+    glMatrixMode(GL_MODELVIEW);
 }
+
+void SetPerspectiveView(int w, int h)
+{
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    double aspectRatio = (GLdouble) w/(GLdouble) h;
+    gluPerspective(
+                   /* field of view in degree */ 38.0,
+                   /* aspect ratio */ aspectRatio,
+                   /* Z near */ .1, /* Z far */ 30.0);
+    glMatrixMode(GL_MODELVIEW);
+}
+
 double GetDeltaTime()
 {
     static clock_t start_time = clock();
@@ -72,18 +88,34 @@ void display(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     double dt = GetDeltaTime();
     maze.draw();
-    //if in perspective view
-    //glLookAt(x,y,z x,y,z x,y,z);
-    //glEndable(GL_DEPTH_TEST):
-    glColor3d(1,0,0);
-    std::string start = "START";
-    std::string end = "FINISH";
-    
-    DrawText(0, -.5, &start);
-    DrawText(COL-1,ROW+.5, &end);
+    if(maze.current_view == maze.perspective_view)
+    {
+        glEnable(GL_DEPTH_TEST);
+        glLoadIdentity();
+        gluLookAt(-3,-3,7,  3,3,0,  0,0,1);
+    }
+    else if(maze.current_view == maze.top_view)
+    {
+        glDisable(GL_DEPTH_TEST);
+        glLoadIdentity();
+    }
+    else // current_view == rat_view
+    {
+        glEnable(GL_DEPTH_TEST);
+        glLoadIdentity();
+        double z_level = .25;
+        double x = rat.get_x();
+        double y = rat.get_y();
+        double dx = rat.get_dx();
+        double dy = rat.get_dy();
+        double at_x = x + dx;
+        double at_y = y + dy;
+        double at_z = z_level;
+        gluLookAt(x,y,z_level,  at_x, at_y, at_z,  0,0,1);
+    }
     double x = rat.get_x();
     double y = rat.get_y();
-    rat.draw();
+    rat.draw(maze);
     if (left_button_down)
     {
         rat.turnLeft(dt);
@@ -95,11 +127,6 @@ void display(void)
     if (middle_button_down)
     {
         rat.scurry(dt, maze);
-    }
-    if ((int)x == ROW-1 && (int)y == COL)
-    {
-        std::string win = "You Win!";
-        DrawText(1.5, 1.5, &win);
     }
 	glutSwapBuffers();
 }
@@ -113,6 +140,18 @@ void keyboard(unsigned char c, int x, int y)
 {
 	switch (c) 
 	{
+        case 'r':
+            maze.current_view = maze.rat_view;
+            SetPerspectiveView(screen_x, screen_y);
+            break;
+        case 'p':
+            maze.current_view = maze.perspective_view;
+            SetPerspectiveView(screen_x, screen_y);
+            break;
+        case 't':
+            maze.current_view = maze.top_view;
+            SetTopView(screen_x, screen_y);
+            break;
         case 'a':
             right_button_down = false;
             left_button_down = true;
@@ -154,11 +193,18 @@ void reshape(int w, int h)
 	// Set the pixel resolution of the final picture (Screen coordinates).
 	glViewport(0, 0, w, h);
 
-	// Set the projection mode to 2D orthographic, and set the world coordinates:
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	gluOrtho2D(-.5, ROW+.5, -1.5, COL+1.5);
-	glMatrixMode(GL_MODELVIEW);
+    if(maze.current_view == maze.top_view)
+    {
+        SetTopView(w,h);
+    }
+    else if(maze.current_view == maze.perspective_view)
+    {
+        SetPerspectiveView(w,h);
+    }
+    else // current_view == rat_view
+    {
+        SetPerspectiveView(w,h);
+    }
 
 }
 

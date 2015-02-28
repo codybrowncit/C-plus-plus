@@ -10,6 +10,8 @@
 
 using namespace std;
 int counter=0;
+
+
 Maze::Maze()
 {
     srand(time(0));
@@ -47,11 +49,20 @@ bool Maze::Cell::getBottom()
 
 void Maze::draw()
 {
+    
     for (int i=0; i<COL; i++)
     {
         for (int j=0; j<ROW; j++)
         {
-            mCell[i][j].draw(i, j);
+            if(current_view == top_view)
+            {
+                mCell[i][j].draw(i, j, 't');
+            }
+            else
+            {
+                mCell[i][j].draw(i, j, 'p');
+            }
+            
         }
     }
 }
@@ -142,30 +153,85 @@ bool Maze::isSafe(double x, double y, double radius)
 
     return true;
 }
-void Maze::Cell::draw(int x, int y)
+void Maze::Cell::draw(int x, int y, char type)
 {
-    glBegin(GL_LINES);
-    glColor3d(0,0,1);
-    if (mBottom)
+    if(type == 't')
     {
-        glVertex2d(x, y);
-        glVertex2d(x+1, y);
+        glBegin(GL_LINES);
+        glColor3d(0,0,1);
+        if (mBottom)
+        {
+            glVertex2d(x, y);
+            glVertex2d(x+1, y);
+        }
+        if (mLeft)
+        {
+            glVertex2d(x, y);
+            glVertex2d(x, y+1);
+        }
+        if (mTop)
+        {
+            glVertex2d(x, y+1);
+            glVertex2d(x+1, y+1);
+        }
+        if (mRight)
+        {
+            glVertex2d(x+1, y);
+            glVertex2d(x+1, y+1);
+        }
+        glEnd();
     }
-    if (mLeft)
+    else
     {
-        glVertex2d(x, y);
-        glVertex2d(x, y+1);
-    }
-    if (mTop)
-    {
-        glVertex2d(x, y+1);
-        glVertex2d(x+1, y+1);
-    }
-    if (mRight)
-    {
-        glVertex2d(x+1, y);
-        glVertex2d(x+1, y+1);
+        // draw walls as GL_QUADS
+        double r = std::rand() % 100;
+        double g = std::rand() % 100;
+        double b = std::rand() % 100;
+        r /= 100;
+        g /= 100;
+        b /= 100;
+        glColor3d(r,g,b);
+        if (mBottom)
+        {
+            glBegin(GL_QUADS);
+            glVertex3d(x,y, 0);
+            glVertex3d(x+1,y, 0);
+            glVertex3d(x+1,y, 1);
+            glVertex3d(x,y, 1);
+            glEnd();
+        }
+        if (mLeft)
+        {
+         glBegin(GL_QUADS);
+         glVertex3d(x,y+1, 0);
+         glVertex3d(x,y, 0);
+         glVertex3d(x,y, 1);
+         glVertex3d(x,y+1, 1);
+         glEnd();        
+         }
+        if (mRight)
+        {
+         glBegin(GL_QUADS);
+         glVertex3d(x+1,y, 0);
+         glVertex3d(x+1,y+1, 0);
+         glVertex3d(x+1,y+1, 1);
+         glVertex3d(x+1,y, 1);
+         glEnd();
+        }
+        if (mTop)
+        {
+         glBegin(GL_QUADS);
+         glVertex3d(x+1,y+1, 0);
+         glVertex3d(x,y+1, 0);
+         glVertex3d(x,y+1, 1);
+         glVertex3d(x+1,y+1, 1);
+         glEnd();
+        }
+
+        
+        // figure out a way to draw each wall in a different color. (you don't have to save the color of the wall)
+        // figure out a way to prevent two co-planar wall from 'bleeding' on top of each other when drawing.
     }
     
-    glEnd();
+
 }
