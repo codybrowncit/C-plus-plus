@@ -41,6 +41,8 @@ public:
         bool getTop();
         bool getBottom();
         bool mBottom, mTop, mLeft, mRight, mVisited;
+
+
         std::string num;
        
         

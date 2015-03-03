@@ -7,13 +7,15 @@
 
 
 // Global Variables (Only what you need!)
-double screen_x = 900;
-double screen_y = 900;
+double screen_x = 1000;
+double screen_y = 1000;
 Maze maze;
 Rat rat;
 bool left_button_down = false;
 bool middle_button_down = false;
 bool right_button_down = false;
+vector<double> rs, gs, bs;
+
 
 void SetTopView(int w, int h)
 {

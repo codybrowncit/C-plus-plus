@@ -60,6 +60,14 @@ void Maze::draw()
             }
             else
             {
+                if (mCell[i][j].mLeft )
+                {
+                    mCell[i-1][j].mRight = false;
+                }
+                if (mCell[i][j].mBottom && j>0)
+                {
+                    mCell[i][j].mBottom = false;
+                }
                 mCell[i][j].draw(i, j, 'p');
             }
             
@@ -184,15 +192,11 @@ void Maze::Cell::draw(int x, int y, char type)
     else
     {
         // draw walls as GL_QUADS
-        double r = std::rand() % 100;
-        double g = std::rand() % 100;
-        double b = std::rand() % 100;
-        r /= 100;
-        g /= 100;
-        b /= 100;
-        glColor3d(r,g,b);
+
+        
         if (mBottom)
         {
+            glColor3d(1,0,0);
             glBegin(GL_QUADS);
             glVertex3d(x,y, 0);
             glVertex3d(x+1,y, 0);
@@ -202,6 +206,7 @@ void Maze::Cell::draw(int x, int y, char type)
         }
         if (mLeft)
         {
+            glColor3d(0,1,0);
          glBegin(GL_QUADS);
          glVertex3d(x,y+1, 0);
          glVertex3d(x,y, 0);
@@ -211,6 +216,7 @@ void Maze::Cell::draw(int x, int y, char type)
          }
         if (mRight)
         {
+            glColor3d(0,0,1);
          glBegin(GL_QUADS);
          glVertex3d(x+1,y, 0);
          glVertex3d(x+1,y+1, 0);
@@ -220,6 +226,7 @@ void Maze::Cell::draw(int x, int y, char type)
         }
         if (mTop)
         {
+            glColor3d(1,1,0);
          glBegin(GL_QUADS);
          glVertex3d(x+1,y+1, 0);
          glVertex3d(x,y+1, 0);
