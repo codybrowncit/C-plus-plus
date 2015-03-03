@@ -37,9 +37,13 @@ double Rat::get_y(){
     return mY;
 }
 double Rat::get_dx(){
+    double radians = mDegrees * M_PI / 180;
+    dx = cos(radians);
     return dx;
 }
 double Rat::get_dy(){
+    double radians = mDegrees * M_PI / 180;
+    dy = sin(radians);
     return dy;
 }
 

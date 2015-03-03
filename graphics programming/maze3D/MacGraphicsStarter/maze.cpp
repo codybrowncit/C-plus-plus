@@ -14,7 +14,7 @@ int counter=0;
 
 Maze::Maze()
 {
-    srand(time(0));
+    //srand(time(0));
     removeWalls(0, 0);
     mCell[0][0].mBottom = false;
     mCell[COL-1][ROW-1].mTop = false;
@@ -60,14 +60,6 @@ void Maze::draw()
             }
             else
             {
-                if (mCell[i][j].mLeft )
-                {
-                    mCell[i-1][j].mRight = false;
-                }
-                if (mCell[i][j].mBottom && j>0)
-                {
-                    mCell[i][j].mBottom = false;
-                }
                 mCell[i][j].draw(i, j, 'p');
             }
             
@@ -200,8 +192,8 @@ void Maze::Cell::draw(int x, int y, char type)
             glBegin(GL_QUADS);
             glVertex3d(x,y, 0);
             glVertex3d(x+1,y, 0);
-            glVertex3d(x+1,y, 1);
-            glVertex3d(x,y, 1);
+            glVertex3d(x+1,y, .5);
+            glVertex3d(x,y, .5);
             glEnd();
         }
         if (mLeft)
@@ -210,8 +202,8 @@ void Maze::Cell::draw(int x, int y, char type)
          glBegin(GL_QUADS);
          glVertex3d(x,y+1, 0);
          glVertex3d(x,y, 0);
-         glVertex3d(x,y, 1);
-         glVertex3d(x,y+1, 1);
+         glVertex3d(x,y, .5);
+         glVertex3d(x,y+1, .5);
          glEnd();        
          }
         if (mRight)
@@ -220,8 +212,8 @@ void Maze::Cell::draw(int x, int y, char type)
          glBegin(GL_QUADS);
          glVertex3d(x+1,y, 0);
          glVertex3d(x+1,y+1, 0);
-         glVertex3d(x+1,y+1, 1);
-         glVertex3d(x+1,y, 1);
+         glVertex3d(x+1,y+1, .5);
+         glVertex3d(x+1,y, .5);
          glEnd();
         }
         if (mTop)
@@ -230,8 +222,8 @@ void Maze::Cell::draw(int x, int y, char type)
          glBegin(GL_QUADS);
          glVertex3d(x+1,y+1, 0);
          glVertex3d(x,y+1, 0);
-         glVertex3d(x,y+1, 1);
-         glVertex3d(x+1,y+1, 1);
+         glVertex3d(x,y+1, .5);
+         glVertex3d(x+1,y+1, .5);
          glEnd();
         }
 

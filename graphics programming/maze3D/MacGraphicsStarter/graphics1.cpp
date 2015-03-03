@@ -131,6 +131,7 @@ void display(void)
         rat.scurry(dt, maze);
     }
 	glutSwapBuffers();
+    glutPostRedisplay();
 }
 
 

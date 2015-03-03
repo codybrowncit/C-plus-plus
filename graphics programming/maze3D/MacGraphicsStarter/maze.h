@@ -18,8 +18,8 @@
 #ifndef __MAZE_H_
 #define __MAZE_H_
 
-const int COL = 5;
-const int ROW = 5;
+const int COL = 30;
+const int ROW = 30;
 
 class Maze
 {
