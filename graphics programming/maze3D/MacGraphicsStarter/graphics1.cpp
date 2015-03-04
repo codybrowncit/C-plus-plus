@@ -7,14 +7,14 @@
 
 
 // Global Variables (Only what you need!)
-double screen_x = 1000;
-double screen_y = 1000;
+double screen_x = 2000;
+double screen_y = 2000;
 Maze maze;
 Rat rat;
 bool left_button_down = false;
 bool middle_button_down = false;
 bool right_button_down = false;
-vector<double> rs, gs, bs;
+
 
 
 void SetTopView(int w, int h)
@@ -157,18 +157,33 @@ void keyboard(unsigned char c, int x, int y)
             break;
         case 'a':
             right_button_down = false;
+            if (left_button_down == true) {
+                left_button_down = false;
+            }
+            else{
             left_button_down = true;
+            }
             middle_button_down = false;
             break;
         case 'd':
             left_button_down = false;
-            right_button_down = true;
+            if (right_button_down == true) {
+                right_button_down = false;
+            }
+            else{
+                right_button_down = true;
+            }
             middle_button_down = false;
             break;
         case 'w':
             left_button_down = false;
             right_button_down = false;
-            middle_button_down = true;
+            if (middle_button_down == true) {
+                middle_button_down = false;
+            }
+            else{
+                middle_button_down = true;
+            }
             break;
         case 'q':
 		case 27: // escape character means to quit the program

@@ -14,7 +14,7 @@ int counter=0;
 
 Maze::Maze()
 {
-    //srand(time(0));
+    srand(time(0));
     removeWalls(0, 0);
     mCell[0][0].mBottom = false;
     mCell[COL-1][ROW-1].mTop = false;
@@ -190,41 +190,41 @@ void Maze::Cell::draw(int x, int y, char type)
         {
             glColor3d(1,0,0);
             glBegin(GL_QUADS);
-            glVertex3d(x,y, 0);
-            glVertex3d(x+1,y, 0);
-            glVertex3d(x+1,y, .5);
-            glVertex3d(x,y, .5);
+            glVertex3d(x,y-.0005, 0);
+            glVertex3d(x+1,y-.0005, 0);
+            glVertex3d(x+1,y-.0005, .5);
+            glVertex3d(x,y-.0005, .5);
             glEnd();
         }
         if (mLeft)
         {
             glColor3d(0,1,0);
-         glBegin(GL_QUADS);
-         glVertex3d(x,y+1, 0);
-         glVertex3d(x,y, 0);
-         glVertex3d(x,y, .5);
-         glVertex3d(x,y+1, .5);
-         glEnd();        
-         }
+            glBegin(GL_QUADS);
+            glVertex3d(x-.0005,y+1, 0);
+            glVertex3d(x-.0005,y, 0);
+            glVertex3d(x-.0005,y, .5);
+            glVertex3d(x-.0005,y+1, .5);
+            glEnd();
+        }
         if (mRight)
         {
             glColor3d(0,0,1);
-         glBegin(GL_QUADS);
-         glVertex3d(x+1,y, 0);
-         glVertex3d(x+1,y+1, 0);
-         glVertex3d(x+1,y+1, .5);
-         glVertex3d(x+1,y, .5);
-         glEnd();
+            glBegin(GL_QUADS);
+            glVertex3d(x+1,y, 0);
+            glVertex3d(x+1,y+1, 0);
+            glVertex3d(x+1,y+1, .5);
+            glVertex3d(x+1,y, .5);
+            glEnd();
         }
         if (mTop)
         {
             glColor3d(1,1,0);
-         glBegin(GL_QUADS);
-         glVertex3d(x+1,y+1, 0);
-         glVertex3d(x,y+1, 0);
-         glVertex3d(x,y+1, .5);
-         glVertex3d(x+1,y+1, .5);
-         glEnd();
+            glBegin(GL_QUADS);
+            glVertex3d(x+1,y+1, 0);
+            glVertex3d(x,y+1, 0);
+            glVertex3d(x,y+1, .5);
+            glVertex3d(x+1,y+1, .5);
+            glEnd();
         }
 
         

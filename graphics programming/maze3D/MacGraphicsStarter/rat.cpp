@@ -59,7 +59,7 @@ void Rat::draw(Maze &maze)
 {
     if(maze.current_view == maze.rat_view)
     {
-        return; // drawing yourself in rat view looks bad.
+       // return; // drawing yourself in rat view looks bad.
     }
     glPushMatrix();
     
