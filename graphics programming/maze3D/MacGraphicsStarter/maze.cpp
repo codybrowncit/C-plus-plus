@@ -188,7 +188,10 @@ void Maze::Cell::draw(int x, int y, char type)
         
         if (mBottom)
         {
-            glColor3d(1,0,0);
+            int r =(x*37952+y*79528174)%256;
+            int g = (x*93489021+y*349812374)%256;
+            int b = (x*1234+y*4321)%256;
+            glColor3ub(r,g,b);
             glBegin(GL_QUADS);
             glVertex3d(x,y-.0005, 0);
             glVertex3d(x+1,y-.0005, 0);
@@ -198,7 +201,10 @@ void Maze::Cell::draw(int x, int y, char type)
         }
         if (mLeft)
         {
-            glColor3d(0,1,0);
+            int r =(x*3431534+y*874)%256;
+            int g = (x*45433+y*5842)%256;
+            int b = (x*3241+y*798)%256;
+            glColor3ub(r,g,b);
             glBegin(GL_QUADS);
             glVertex3d(x-.0005,y+1, 0);
             glVertex3d(x-.0005,y, 0);
@@ -208,7 +214,10 @@ void Maze::Cell::draw(int x, int y, char type)
         }
         if (mRight)
         {
-            glColor3d(0,0,1);
+            int r =(x*63456+y*7857)%256;
+            int g = (x*23413+y*95768)%256;
+            int b = (x*352346+y*457)%256;
+            glColor3ub(r,g,b);
             glBegin(GL_QUADS);
             glVertex3d(x+1,y, 0);
             glVertex3d(x+1,y+1, 0);
@@ -218,7 +227,10 @@ void Maze::Cell::draw(int x, int y, char type)
         }
         if (mTop)
         {
-            glColor3d(1,1,0);
+            int r =(x*5673542+y*473563)%256;
+            int g = (x*54675+y*567345)%256;
+            int b = (x*462453+y*6574)%256;
+            glColor3ub(r,g,b);
             glBegin(GL_QUADS);
             glVertex3d(x+1,y+1, 0);
             glVertex3d(x,y+1, 0);

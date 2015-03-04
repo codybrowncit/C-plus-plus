@@ -279,7 +279,7 @@ int main(int argc, char **argv)
 	} 
 	else 
 	{
-		glutCreateWindow("2D Maze");
+		glutCreateWindow("3D Maze");
 	}
 
 	glutDisplayFunc(display);
