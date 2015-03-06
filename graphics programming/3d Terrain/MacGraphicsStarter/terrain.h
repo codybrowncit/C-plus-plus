@@ -27,7 +27,7 @@ public:
     Terrain();
     void draw();
     enum viewtype{top_view, perspective_view, eye_view};
-    viewtype current_view = top_view;
+    viewtype current_view = eye_view;
     bool isSafe(double x, double y, double radius);
     class Cell
     {

@@ -87,9 +87,9 @@ void Terrain::Cell::draw(int x, int y, char type)
     int b = (x*1234+y*4321)%256;
     glColor3ub(r,g,b);
     glBegin(GL_QUADS);
-    glVertex3d(x,y-.0005, 0);
-    glVertex3d(x+1,y-.0005, 0);
-    glVertex3d(x+1,y-.0005, .5);
-    glVertex3d(x,y-.0005, .5);
+    glVertex3d(x,y, 0);
+    glVertex3d(x+1,y, 0);
+    glVertex3d(x+1,y+1, 0);
+    glVertex3d(x,y+1, 0);
     glEnd();
 }
