@@ -1,8 +1,8 @@
 //
-//  rat.h
+//  person.h
 //  MacGraphicsStarter
 //
-//  Created by Cody Brown on 2/11/15.
+//  Created by Cody Brown on 3/6/15.
 //
 //
 
@@ -18,17 +18,17 @@
 #include <GLUT/glut.h>
 #include <vector>
 #include <cmath>
-#include "maze.h"
+#include "terrain.h"
 using namespace std;
-const double SCURRY_SPEED = 50;
+
+const double MOVE_SPEED = 50;
 const double TURN_SPEED = 10;
 
-class Rat
+class Person
 {
 public:
-    Rat();
-    void draw(Maze &maze);
-    void scurry(double dt, Maze &maze);
+    Person();
+    void move(double dt, Terrain &terrain);
     void turnLeft(double dt);
     void turnRight(double dt);
     double get_x();
@@ -40,10 +40,10 @@ public:
 private:
     double dx, dy, mX, mY, mDegrees, mRadius;
 
-
+    
     
 };
 
 
 
-#endif /* defined(__MacGraphicsStarter__rat__) */
+#endif /* defined(__MacGraphicsStarter__person__) */

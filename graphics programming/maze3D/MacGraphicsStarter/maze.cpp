@@ -136,6 +136,7 @@ void Maze::removeWalls(int x, int y)
         }
     }
 }
+
 bool Maze::isSafe(double x, double y, double radius)
 {
     int celli = (int)x;
