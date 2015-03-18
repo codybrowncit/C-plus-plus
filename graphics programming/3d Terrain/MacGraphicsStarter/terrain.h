@@ -21,6 +21,8 @@
 const int COL = 100;
 const int ROW = 100;
 
+
+
 class Terrain
 {
 public:
@@ -29,6 +31,7 @@ public:
     enum viewtype{top_view, perspective_view, eye_view};
     viewtype current_view = eye_view;
     bool isSafe(double x, double y, double radius);
+    double get_z(double x, double y);
     class Cell
     {
     public:
@@ -38,9 +41,10 @@ public:
         bool getTop();
         bool getBottom();
         bool mBottom, mTop, mLeft, mRight;
-        void draw(int x, int y, char type);
+        void draw(int x, int y);
     };
     Cell mCell[COL][ROW];
+    double z[COL][ROW];
     
 };
 

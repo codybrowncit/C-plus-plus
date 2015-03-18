@@ -5,7 +5,7 @@
 //  Created by Cody Brown on 3/6/15.
 //
 //
-
+#include "cmath"
 #include "terrain.h"
 
 using namespace std;
@@ -14,6 +14,13 @@ using namespace std;
 Terrain::Terrain()
 {
     srand(time(0));
+    for (int x=0; x<COL+1; x++)
+    {
+        mCell[x][0].mBottom = true;
+        mCell[x][49].mTop = true;
+        mCell[0][x].mLeft = true;
+        mCell[49][x].mRight = true;
+    }
 }
 
 Terrain::Cell::Cell()
@@ -39,6 +46,9 @@ bool Terrain::Cell::getBottom()
 {
     return mBottom;
 }
+
+
+
 bool Terrain::isSafe(double x, double y, double radius)
 {
     int celli = (int)x;
@@ -56,40 +66,47 @@ bool Terrain::isSafe(double x, double y, double radius)
     
     return true;
 }
+double Terrain::get_z(double x, double y)
+{
+    return (y * .03 * sin(y * .09)) + (.221 * y * cos(x*.09)) + ( .9 * sin(x*.432)) * (x * .03 + cos(y*.32324));
+}
 
 void Terrain::draw()
 {
-    
-    for (int i=0; i<COL; i++)
+    for (int x=0; x<COL; x++)
     {
-        for (int j=0; j<ROW; j++)
+        for (int y=0; y<ROW; y++)
         {
-            if(current_view == top_view)
-            {
-                mCell[i][j].draw(i, j, 't');
-            }
-            else
-            {
-                mCell[i][j].draw(i, j, 'p');
-            }
-            
+            z[x][y] = get_z(x, y);
+        }
+    }
+    for (int x=0; x<COL; x++)
+    {
+        for (int y=0; y<ROW; y++)
+        {
+            int r =(x*37952+y*79528174)%256;
+            int g = (x*93489021+y*349812374)%256;
+            int b = (x*1234+y*4321)%256;
+            glColor3ub(r,g,b);
+            glBegin(GL_QUADS);
+            glVertex3d(x,y, z[x][y]);
+            glVertex3d(x+1,y, z[x+1][y]);
+            glVertex3d(x+1,y+1, z[x+1][y+1]);
+            glVertex3d(x,y+1, z[x][y+1]);
+            glEnd();
+            mCell[x][y].draw(x, y);
         }
     }
 }
 
-
-
-void Terrain::Cell::draw(int x, int y, char type)
+void Terrain::Cell::draw(int x, int y)
 {
 
-    int r =(x*37952+y*79528174)%256;
-    int g = (x*93489021+y*349812374)%256;
-    int b = (x*1234+y*4321)%256;
-    glColor3ub(r,g,b);
+    glColor3ub(0,0,1);
     glBegin(GL_QUADS);
-    glVertex3d(x,y, 0);
-    glVertex3d(x+1,y, 0);
-    glVertex3d(x+1,y+1, 0);
-    glVertex3d(x,y+1, 0);
+    glVertex3d(x,y, .5);
+    glVertex3d(x+1,y, .5);
+    glVertex3d(x+1,y+1, .5);
+    glVertex3d(x,y+1, .5);
     glEnd();
 }

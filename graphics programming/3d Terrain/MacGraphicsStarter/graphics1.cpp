@@ -7,8 +7,8 @@
 
 
 // Global Variables (Only what you need!)
-double screen_x = 2000;
-double screen_y = 2000;
+double screen_x = 1000;
+double screen_y = 1000;
 Terrain terrain;
 Person person;
 bool left_button_down = false;
@@ -37,7 +37,7 @@ void SetPerspectiveView(int w, int h)
     gluPerspective(
                    /* field of view in degree */ 38.0,
                    /* aspect ratio */ aspectRatio,
-                   /* Z near */ .1, /* Z far */ 30.0);
+                   /* Z near */ .1, /* Z far */ 100.0);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -105,18 +105,20 @@ void display(void)
     {
         glEnable(GL_DEPTH_TEST);
         glLoadIdentity();
-        double z_level = .25;
+        double z_level = 2.0;
         double x = person.get_x();
         double y = person.get_y();
         double dx = person.get_dx();
         double dy = person.get_dy();
         double at_x = x + dx;
         double at_y = y + dy;
-        double at_z = z_level;
-        gluLookAt(x,y,z_level,  at_x, at_y, at_z,  0,0,1);
+        double at_z = terrain.get_z(at_x, at_y);
+        double H = fmax(at_z, .5) + z_level;
+        double currentTerrainHeight = fmax(.5, at_z);
+        double tilt = (fmax(at_z, .5) - currentTerrainHeight);
+        double lookZ = H + tilt;
+        gluLookAt(x,y,H,  at_x, at_y, lookZ,  0,0,1);
     }
-    double x = person.get_x();
-    double y = person.get_y();
     if (left_button_down)
     {
         person.turnLeft(dt);
