@@ -11,8 +11,9 @@
 using namespace std;
 #include <GLUT/glut.h>
 #include "graphics.h"
+#include "ctime"
 
-
+enum PIECES {PAWN=10, ROOK, KNIGHT, BISHOP, QUEEN, KING};
 // Global Variables
 // Some colors you can use, or make your own and add them
 // here and in graphics.h
@@ -22,7 +23,7 @@ GLdouble brightGreenMaterial[] = {0.1, 0.9, 0.1, 1.0};
 GLdouble blueMaterial[] = {0.1, 0.2, 0.7, 1.0};
 GLdouble whiteMaterial[] = {1.0, 1.0, 1.0, 1.0};
 
-double screen_x = 600;
+double screen_x = 1000;
 double screen_y = 500;
 
 
@@ -133,11 +134,28 @@ double at[3]  = {4500, 0,     4000};
 //
 // GLUT callback functions
 //
+void RatioSet(double currentTime, double time1, double time2, double &value, double value1, double value2)
+{
+    double ratio = (currentTime - time1) / (time2 - time1);
+    if (ratio < 0)
+    {
+        ratio = 0;
+    }
+    if (ratio > 1)
+    {
+        ratio = 1;
+    }
+    value = value1 + ratio*(value2 - value1);
+}
 
 // This callback function gets called by the Glut
 // system whenever it decides things need to be redrawn.
 void display(void)
 {
+    static clock_t start = clock();
+    clock_t finish = clock();
+    double currentTime = (double)(finish - start) / CLOCKS_PER_SEC;
+    
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
@@ -146,45 +164,115 @@ void display(void)
 	// Set the color for one side (white), and draw its 16 pieces.
 	GLfloat mat_amb_diff1[] = {0.8, 0.9, 0.5, 1.0};
 	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff1);
-
+    
+    glPushMatrix();
+    glTranslatef(1000, 0, 1000);
+    glCallList(ROOK);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(2000, 0, 1000);
+    glCallList(KNIGHT);
+    glPopMatrix();
+    
 	glPushMatrix();
 	glTranslatef(3000, 0, 1000);
-	DrawPiece("/Users/codybrown/Documents/school/C-plus-plus/graphicsProgramming/chess/MacGraphicsStarter/BISHOP.POL");
+	glCallList(BISHOP);
 	glPopMatrix();
 
 	glPushMatrix();
 	glTranslatef(4000, 0, 1000);
-	DrawPiece("/Users/codybrown/Documents/school/C-plus-plus/graphicsProgramming/chess/MacGraphicsStarter/KING.POL");
+	glCallList(KING);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(5000, 0, 1000);
-	DrawPiece("/Users/codybrown/Documents/school/C-plus-plus/graphicsProgramming/chess/MacGraphicsStarter/QUEEN.POL");
+    double queen_z = 1000;
+    RatioSet(currentTime, 2.0, 4.0, queen_z, 1000, 5000);
+	glTranslatef(5000, 0, queen_z);
+	glCallList(QUEEN);
 	glPopMatrix();
 
 	glPushMatrix();
 	glTranslatef(6000, 0, 1000);
-	DrawPiece("/Users/codybrown/Documents/school/C-plus-plus/graphicsProgramming/chess/MacGraphicsStarter/BISHOP.POL");
+	glCallList(BISHOP);
 	glPopMatrix();
-
-	// Set the color for one side (black), and draw its 16 pieces.
-	GLfloat mat_amb_diff2[] = {0.1, 0.5, 0.8, 1.0};
-	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff2);
-
-	glPushMatrix();
-	glTranslatef(4000, 0, 8000);
-	DrawPiece("/Users/codybrown/Documents/school/C-plus-plus/graphicsProgramming/chess/MacGraphicsStarter/KING.POL");
-	glPopMatrix();
-
+    
+    glPushMatrix();
+    glTranslatef(7000, 0, 1000);
+    glCallList(KNIGHT);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(8000, 0, 1000);
+    glCallList(ROOK);
+    glPopMatrix();
+    
+    for(int x=1000; x<=8000; x+=1000)
+    {
+        glPushMatrix();
+        glTranslatef(x, 0, 2000);
+        glCallList(PAWN);
+        glPopMatrix();
+    }
+    
+    // Set the color for one side (black), and draw its 16 pieces.
+    GLfloat mat_amb_diff2[] = {0.1, 0.5, 0.8, 1.0};
+    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff2);
+    
+    glPushMatrix();
+    glTranslatef(1000, 0, 8000);
+    glCallList(ROOK);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(2000, 0, 8000);
+    glRotated(180, 0, 1, 0);
+    glCallList(KNIGHT);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(3000, 0, 8000);
+    glCallList(BISHOP);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(4000, 0, 8000);
+    glCallList(KING);
+    glPopMatrix();
+    
+    glPushMatrix();
+    //double queen_z = 1000;
+    //RatioSet(currentTime, 2.0, 4.0, queen_z, 1000, 5000);
+    glTranslatef(5000, 0, 8000);
+    glCallList(QUEEN);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(6000, 0, 8000);
+    glCallList(BISHOP);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(7000, 0, 8000);
+    glRotated(180, 0, 1, 0);
+    glCallList(KNIGHT);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(8000, 0, 8000);
+    glCallList(ROOK);
+    glPopMatrix();
+    
 	for(int x=1000; x<=8000; x+=1000)
 	{
 		glPushMatrix();
 		glTranslatef(x, 0, 7000);
-		DrawPiece("/Users/codybrown/Documents/school/C-plus-plus/graphicsProgramming/chess/MacGraphicsStarter/PAWN.POL");
+        glCallList(PAWN);
 		glPopMatrix();
 	}
 
 	glutSwapBuffers();
+    glutPostRedisplay();
 }
 
 
@@ -195,9 +283,9 @@ void keyboard(unsigned char c, int x, int y)
 	switch (c) 
 	{
         case 'q':
-		case 27: // escape character means to quit the program
-			exit(0);
-			break;
+            case 27: // escape character means to quit the program
+                exit(0);
+                break;
 		default:
 			return; // if we don't care, return without glutPostRedisplay()
 	}
@@ -251,7 +339,12 @@ void mouse(int mouse_button, int state, int x, int y)
 	}
 	glutPostRedisplay();
 }
-
+void PieceList(PIECES e, char filename[])
+{
+    glNewList(e, GL_COMPILE);
+    DrawPiece(filename);
+    glEndList();
+}
 // Your initialization code goes here.
 void InitializeMyStuff()
 {
@@ -272,6 +365,13 @@ void InitializeMyStuff()
 	glEnable(GL_DEPTH_TEST); // turn on depth buffering
 	glEnable(GL_LIGHTING);	// enable general lighting
 	glEnable(GL_LIGHT0);	// enable the first light.
+    
+    PieceList(PAWN, "PAWN.POL");
+    PieceList(BISHOP, "BISHOP.POL");
+    PieceList(ROOK, "ROOK.POL");
+    PieceList(KING, "KING.POL");
+    PieceList(KNIGHT, "KNIGHT.POL");
+    PieceList(QUEEN, "QUEEN.POL");
 }
 
 
