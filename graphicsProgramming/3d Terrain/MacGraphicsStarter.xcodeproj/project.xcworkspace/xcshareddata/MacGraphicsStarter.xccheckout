@@ -14,7 +14,7 @@
 		<string>https://github.com/codybrowncit/C-plus-plus.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>graphics programming/3d Terrain/MacGraphicsStarter.xcodeproj</string>
+	<string>graphicsProgramming/3d Terrain/MacGraphicsStarter.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>E5DE2E8A566997D3D05792DD383825F6726A2723</key>

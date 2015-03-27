@@ -148,69 +148,155 @@ void RatioSet(double currentTime, double time1, double time2, double &value, dou
     value = value1 + ratio*(value2 - value1);
 }
 
+void DrawBoard()
+{
+    //    glBegin(GL_QUADS);
+    //    glVertex3d(0, -1000, 0);
+    //    glVertex3d(0, -1000, 9000);
+    //    glVertex3d(9000, -1000, 9000);
+    //    glVertex3d(9000, -1000, 0);
+    //    glEnd();
+    GLfloat black[] = {0.0, 0.0, 0.0, 1.0};
+    GLfloat white[] = {1.0, 1.0, 1.0, 1.0};
+    GLfloat brown[] = {0.89, 0.53, 0.27, 1.0};
+    bool oddCol = false;
+    bool oddRow = false;
+    for (int row=500; row<10000; row+=1000)
+    {
+        for (int col=500; col<10000; col+=1000)
+        {
+            if (col == 500 || row == 500 || col == 9500 || row == 9500) {
+                glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, brown);
+            }
+            else if (!oddRow)
+            {
+                // even row
+                if (!oddCol)
+                {
+                    // even col
+                    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, white);
+                    
+                }
+                else
+                {
+                    // odd col
+                    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, black);
+                }
+            }
+            else
+            {
+                // odd row
+                if (!oddCol)
+                {
+                    // even col
+                    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, black);
+                    
+                }
+                else
+                {
+                    // odd col
+                    glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, white);
+                }
+            }
+            glBegin(GL_POLYGON);
+            glNormal3f(0, 1, 0);
+            glVertex3d(col, 0, row);
+            glVertex3d(col, 0, row + 1000);
+            glVertex3d(col + 1000, 0, row + 1000);
+            glVertex3d(col + 1000, 0, row);
+            glEnd();
+            glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, brown);
+            glBegin(GL_POLYGON);
+            glNormal3f(0, 0, -1);
+            glVertex3d(col, 0, row);
+            glVertex3d(col, -1000, row);
+            glVertex3d(col + 1000, -1000, row);
+            glVertex3d(col + 1000, 0, row);
+            glEnd();
+            
+            oddCol = !oddCol;
+        }
+        oddRow = !oddRow;
+    }
+}
+
 // This callback function gets called by the Glut
 // system whenever it decides things need to be redrawn.
 void display(void)
 {
     static clock_t start = clock();
     clock_t finish = clock();
-    double currentTime = (double)(finish - start) / CLOCKS_PER_SEC;
+    double currentTime = ((double)(finish - start) / CLOCKS_PER_SEC)*10;
     
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glLoadIdentity();
 	gluLookAt(eye[0], eye[1], eye[2],  at[0], at[1], at[2],  0,1,0); // Y is up!
-
+    DrawBoard();
 	// Set the color for one side (white), and draw its 16 pieces.
 	GLfloat mat_amb_diff1[] = {0.8, 0.9, 0.5, 1.0};
 	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff1);
     
     glPushMatrix();
-    glTranslatef(1000, 0, 1000);
+    double rook_z = 2000;
+    double rook_y = 0;
+    RatioSet(currentTime, 4.0, 5.0, rook_y, 0, 1200);
+    RatioSet(currentTime, 4.0, 6.0, rook_z, 2000, 4000);
+    glTranslatef(2000, rook_y, rook_z);
+    double angle = 0.0;
+    RatioSet(currentTime, 4.0, 6.0, angle, 0, 360);
+    glRotated(angle, 2000, 0, 0);
     glCallList(ROOK);
     glPopMatrix();
     
     glPushMatrix();
-    glTranslatef(2000, 0, 1000);
+    glTranslatef(0, 0,0);
     glCallList(KNIGHT);
     glPopMatrix();
     
 	glPushMatrix();
-	glTranslatef(3000, 0, 1000);
+	glTranslatef(4000, 0, 2000);
 	glCallList(BISHOP);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(4000, 0, 1000);
+	glTranslatef(5000, 0, 2000);
 	glCallList(KING);
 	glPopMatrix();
 
 	glPushMatrix();
-    double queen_z = 1000;
-    RatioSet(currentTime, 2.0, 4.0, queen_z, 1000, 5000);
-	glTranslatef(5000, 0, queen_z);
+    double queen_z = 2000;
+    //RatioSet(currentTime, 2.0, 4.0, queen_z, 2000, 5000);
+	glTranslatef(6000, 0, queen_z);
 	glCallList(QUEEN);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(6000, 0, 1000);
+	glTranslatef(7000, 0, 2000);
 	glCallList(BISHOP);
 	glPopMatrix();
     
     glPushMatrix();
-    glTranslatef(7000, 0, 1000);
+    glTranslatef(8000, 0, 2000);
     glCallList(KNIGHT);
     glPopMatrix();
     
     glPushMatrix();
-    glTranslatef(8000, 0, 1000);
+    glTranslatef(9000, 0, 2000);
     glCallList(ROOK);
     glPopMatrix();
     
-    for(int x=1000; x<=8000; x+=1000)
+    glPushMatrix();
+    double p1_z = 3000;
+    RatioSet(currentTime, 2.0, 4.0, p1_z, 3000, 5000);
+    glTranslatef(2000, 0, p1_z);
+    glCallList(PAWN);
+    glPopMatrix();
+    
+    for(int x=3000; x<=9000; x+=1000)
     {
         glPushMatrix();
-        glTranslatef(x, 0, 2000);
+        glTranslatef(x, 0, 3000);
         glCallList(PAWN);
         glPopMatrix();
     }
@@ -220,53 +306,53 @@ void display(void)
     glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mat_amb_diff2);
     
     glPushMatrix();
-    glTranslatef(1000, 0, 8000);
+    glTranslatef(2000, 0, 9000);
     glCallList(ROOK);
     glPopMatrix();
     
     glPushMatrix();
-    glTranslatef(2000, 0, 8000);
+    glTranslatef(3000, 0, 9000);
     glRotated(180, 0, 1, 0);
     glCallList(KNIGHT);
     glPopMatrix();
     
     glPushMatrix();
-    glTranslatef(3000, 0, 8000);
+    glTranslatef(4000, 0, 9000);
     glCallList(BISHOP);
     glPopMatrix();
     
     glPushMatrix();
-    glTranslatef(4000, 0, 8000);
+    glTranslatef(5000, 0, 9000);
     glCallList(KING);
     glPopMatrix();
     
     glPushMatrix();
     //double queen_z = 1000;
     //RatioSet(currentTime, 2.0, 4.0, queen_z, 1000, 5000);
-    glTranslatef(5000, 0, 8000);
+    glTranslatef(6000, 0, 9000);
     glCallList(QUEEN);
     glPopMatrix();
     
     glPushMatrix();
-    glTranslatef(6000, 0, 8000);
+    glTranslatef(7000, 0, 9000);
     glCallList(BISHOP);
     glPopMatrix();
     
     glPushMatrix();
-    glTranslatef(7000, 0, 8000);
+    glTranslatef(8000, 0, 9000);
     glRotated(180, 0, 1, 0);
     glCallList(KNIGHT);
     glPopMatrix();
     
     glPushMatrix();
-    glTranslatef(8000, 0, 8000);
+    glTranslatef(9000, 0, 9000);
     glCallList(ROOK);
     glPopMatrix();
     
-	for(int x=1000; x<=8000; x+=1000)
+	for(int x=2000; x<=9000; x+=1000)
 	{
 		glPushMatrix();
-		glTranslatef(x, 0, 7000);
+		glTranslatef(x, 0, 8000);
         glCallList(PAWN);
 		glPopMatrix();
 	}
@@ -301,7 +387,7 @@ void SetPerspectiveView(int w, int h)
 	glLoadIdentity();
 	double aspectRatio = (GLdouble) w/(GLdouble) h;
 	gluPerspective( 
-	/* field of view in degree */ 38.0,
+	/* field of view in degree */ 42.0,
 	/* aspect ratio */ aspectRatio,
 	/* Z near */ 100, /* Z far */ 30000.0);
 	glMatrixMode(GL_MODELVIEW);

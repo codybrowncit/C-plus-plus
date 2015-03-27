@@ -102,7 +102,7 @@ void Terrain::draw()
 void Terrain::Cell::draw(int x, int y)
 {
 
-    glColor3ub(0,0,1);
+    glColor3d(0,0,1);
     glBegin(GL_QUADS);
     glVertex3d(x,y, .5);
     glVertex3d(x+1,y, .5);
