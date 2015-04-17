@@ -16,10 +16,7 @@ Terrain::Terrain()
     srand(time(0));
     for (int x=0; x<COL+1; x++)
     {
-        mCell[x][0].mBottom = true;
-        mCell[x][49].mTop = true;
-        mCell[0][x].mLeft = true;
-        mCell[49][x].mRight = true;
+
     }
 }
 
@@ -51,6 +48,7 @@ bool Terrain::Cell::getBottom()
 
 bool Terrain::isSafe(double x, double y, double radius)
 {
+    return true;
     int celli = (int)x;
     int cellj = (int)y;
     double offsetx = x-celli;
@@ -66,6 +64,7 @@ bool Terrain::isSafe(double x, double y, double radius)
     
     return true;
 }
+
 double Terrain::get_z(double x, double y)
 {
     return (y * .03 * sin(y * .09)) + (.221 * y * cos(x*.09)) + ( .9 * sin(x*.432)) * (x * .03 + cos(y*.32324));
@@ -104,9 +103,11 @@ void Terrain::Cell::draw(int x, int y)
 
     glColor3d(0,0,1);
     glBegin(GL_QUADS);
-    glVertex3d(x,y, .5);
-    glVertex3d(x+1,y, .5);
-    glVertex3d(x+1,y+1, .5);
-    glVertex3d(x,y+1, .5);
+    glVertex3d(x,y, WATER_HEIGHT);
+    glVertex3d(x+1,y, WATER_HEIGHT);
+    glVertex3d(x+1,y+1, WATER_HEIGHT);
+    glVertex3d(x,y+1, WATER_HEIGHT);
     glEnd();
 }
+
+

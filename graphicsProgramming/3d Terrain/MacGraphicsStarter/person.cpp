@@ -51,7 +51,7 @@ double Person::get_dy(){
 Person::Person()
 {
     
-    mX =mY = 8;
+    mX =mY = .5;
     mDegrees = 0;
     mRadius = .4;
 }

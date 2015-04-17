@@ -20,7 +20,7 @@
 
 const int COL = 100;
 const int ROW = 100;
-
+const double WATER_HEIGHT = 0.5;
 
 
 class Terrain

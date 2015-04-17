@@ -103,21 +103,19 @@ void display(void)
     }
     else // current_view == eye_view
     {
+        double HOVER_HEIGHT = .2;
         glEnable(GL_DEPTH_TEST);
         glLoadIdentity();
         double z_level = 2.0;
         double x = person.get_x();
         double y = person.get_y();
+        double z = fmax(terrain.get_z(x, y), WATER_HEIGHT)+HOVER_HEIGHT;
         double dx = person.get_dx();
         double dy = person.get_dy();
         double at_x = x + dx;
         double at_y = y + dy;
-        double at_z = terrain.get_z(at_x, at_y);
-        double H = fmax(at_z, .5) + z_level;
-        double currentTerrainHeight = fmax(.5, at_z);
-        double tilt = (fmax(at_z, .5) - currentTerrainHeight);
-        double lookZ = H + tilt;
-        gluLookAt(x,y,H,  at_x, at_y, lookZ,  0,0,1);
+        double at_z = fmax(terrain.get_z(at_x, at_y), WATER_HEIGHT)+HOVER_HEIGHT;
+        gluLookAt(x,y,z,  at_x, at_y, at_z,  0,0,1);
     }
     if (left_button_down)
     {

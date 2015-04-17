@@ -22,7 +22,7 @@
 using namespace std;
 
 const double MOVE_SPEED = 50;
-const double TURN_SPEED = 10;
+const double TURN_SPEED = 2;
 
 class Person
 {

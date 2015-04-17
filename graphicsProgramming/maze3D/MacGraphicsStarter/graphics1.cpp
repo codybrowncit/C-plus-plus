@@ -138,7 +138,7 @@ void display(void)
 
 
 // This callback function gets called by the Glut
-// system whenever a key is pressed.
+// system whenever a q is pressed.
 void keyboard(unsigned char c, int x, int y)
 {
 	switch (c) 
