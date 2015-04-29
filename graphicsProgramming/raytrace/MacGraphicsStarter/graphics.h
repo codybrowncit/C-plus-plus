@@ -1,4 +1,4 @@
-#include <GLUT/glut.h>
+#include <GLUT/GLUT.h>
 
 void text_output(double x, double y, char *string);
 void DrawCircle(double x1, double y1, double radius);
