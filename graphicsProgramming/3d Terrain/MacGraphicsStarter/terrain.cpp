@@ -65,18 +65,19 @@ bool Terrain::isSafe(double x, double y, double radius)
     return true;
 }
 
-double Terrain::get_z(double x, double y)
+double Terrain::get_z(double x, double y, double slope)
 {
-    return (y * .03 * sin(y * .09)) + (.221 * y * cos(x*.09)) + ( .9 * sin(x*.432)) * (x * .03 + cos(y*.32324));
+    return (y * slope * sin(y * .09)) + (.221 * y * cos(x * .09)) + ( .9 * sin(x*.432)) * (x * slope + cos(y * .32324));
 }
 
-void Terrain::draw()
+void Terrain::draw(double waterLevel, double slope)
 {
+    
     for (int x=0; x<COL; x++)
     {
         for (int y=0; y<ROW; y++)
         {
-            z[x][y] = get_z(x, y);
+            z[x][y] = get_z(x, y, slope);
         }
     }
     for (int x=0; x<COL; x++)
@@ -93,21 +94,22 @@ void Terrain::draw()
             glVertex3d(x+1,y+1, z[x+1][y+1]);
             glVertex3d(x,y+1, z[x][y+1]);
             glEnd();
+            mCell[x][y].mWaterLevel = waterLevel;
             mCell[x][y].draw(x, y);
+            
         }
     }
 }
 
 void Terrain::Cell::draw(int x, int y)
 {
-
+    
     glColor3d(0,0,1);
     glBegin(GL_QUADS);
-    glVertex3d(x,y, WATER_HEIGHT);
-    glVertex3d(x+1,y, WATER_HEIGHT);
-    glVertex3d(x+1,y+1, WATER_HEIGHT);
-    glVertex3d(x,y+1, WATER_HEIGHT);
+    glVertex3d(x,y, mWaterLevel);
+    glVertex3d(x+1,y, mWaterLevel);
+    glVertex3d(x+1,y+1, mWaterLevel);
+    glVertex3d(x,y+1, mWaterLevel);
     glEnd();
 }
-
 

@@ -46,6 +46,14 @@ double Rat::get_dy(){
     dy = sin(radians);
     return dy;
 }
+void Rat::set_x(double x)
+{
+    mX = x;
+}
+void Rat::set_y(double y)
+{
+    mY = y;
+}
 
 
 Rat::Rat()
@@ -86,24 +94,32 @@ void Rat::draw(Maze &maze)
     glPopMatrix();
 }
 
-void Rat::scurry(double dt, Maze &maze)
+void Rat::scurry(double dt, Maze &maze, bool supermouse)
 {
     double radians = mDegrees * M_PI / 180;
     dx = cos(radians) * dt * SCURRY_SPEED;
     dy = sin(radians) * dt * SCURRY_SPEED;
-    if (maze.isSafe(mX+dx, mY+dy, mRadius))
+    if (!supermouse) {
+        if (maze.isSafe(mX+dx, mY+dy, mRadius))
+        {
+            mX += dx;
+            mY += dy;
+        }
+        else if (maze.isSafe(mX, mY+dy, mRadius))
+        {
+            mY += dy;
+        }
+        else if (maze.isSafe(mX+dx, mY, mRadius))
+        {
+            mX += dx;
+        }
+    }
+    else
     {
         mX += dx;
         mY += dy;
     }
-    else if (maze.isSafe(mX, mY+dy, mRadius))
-    {
-        mY += dy;
-    }
-    else if (maze.isSafe(mX+dx, mY, mRadius))
-    {
-        mX += dx;
-    }
+
     
 }
 

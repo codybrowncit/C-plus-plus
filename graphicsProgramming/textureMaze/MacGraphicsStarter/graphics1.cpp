@@ -16,7 +16,7 @@ bool middle_button_down = false;
 bool right_button_down = false;
 const int num_textures = 4;
 GLuint texName[num_textures];
-
+bool supermouse = false;
 
 void SetTopView(int w, int h)
 {
@@ -129,7 +129,7 @@ void display(void)
     }
     if (middle_button_down)
     {
-        rat.scurry(dt, maze);
+        rat.scurry(dt, maze, supermouse);
     }
 	glutSwapBuffers();
     glutPostRedisplay();
@@ -142,8 +142,23 @@ void display(void)
 // system whenever a q is pressed.
 void keyboard(unsigned char c, int x, int y)
 {
-	switch (c) 
+    double ratx = (int)rat.get_x();
+    double raty = (int)rat.get_y();
+	switch (c)
 	{
+        case 's':
+            supermouse = true;
+            break;
+        case 'n':
+            supermouse = false;
+            ratx = (int)rat.get_x();
+            raty = (int)rat.get_y();
+            ratx += .5;
+            raty += .5;
+            std::cout<<ratx<<" "<<raty<<std::endl;
+            rat.set_x(ratx);
+            rat.set_y(raty);
+            break;
         case 'r':
             maze.current_view = maze.rat_view;
             SetPerspectiveView(screen_x, screen_y);
@@ -396,7 +411,7 @@ void InitializeMyStuff()
     {
         printf("Error: Wrong number of textures\n");
         
-        exit(1);;
+        exit(1);
     }
     
     glGenTextures(num_textures, texName);
@@ -405,7 +420,7 @@ void InitializeMyStuff()
     {
         glBindTexture(GL_TEXTURE_2D, texName[i]);
         glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
-        int repeats = false;
+        int repeats = true;
         int needs_border = false; // Needed if clamping and not filling the whole polygon.
         if(repeats)
         {

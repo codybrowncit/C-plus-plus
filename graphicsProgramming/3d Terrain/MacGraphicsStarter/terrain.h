@@ -27,11 +27,11 @@ class Terrain
 {
 public:
     Terrain();
-    void draw();
+    void draw(double waterLevel, double slope);
     enum viewtype{top_view, perspective_view, eye_view};
     viewtype current_view = eye_view;
     bool isSafe(double x, double y, double radius);
-    double get_z(double x, double y);
+    double get_z(double x, double y, double slope);
     class Cell
     {
     public:
@@ -42,9 +42,12 @@ public:
         bool getBottom();
         bool mBottom, mTop, mLeft, mRight;
         void draw(int x, int y);
+        double mWaterLevel;
+
     };
     Cell mCell[COL][ROW];
     double z[COL][ROW];
+    
     
 };
 

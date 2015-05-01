@@ -149,6 +149,9 @@ void myMouse(int button, int state, int x, int y)
             }
         }
     }
+    if (button == GLUT_MIDDLE_BUTTON && state == GLUT_DOWN) {
+        moveFlag = !moveFlag;
+    }
 }
 
 void motion(int x, int y)

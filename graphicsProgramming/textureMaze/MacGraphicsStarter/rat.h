@@ -28,13 +28,15 @@ class Rat
 public:
     Rat();
     void draw(Maze &maze);
-    void scurry(double dt, Maze &maze);
+    void scurry(double dt, Maze &maze, bool supermouse);
     void turnLeft(double dt);
     void turnRight(double dt);
     double get_x();
     double get_y();
     double get_dx();
     double get_dy();
+    void set_x(double x);
+    void set_y(double y);
     
     
 private:

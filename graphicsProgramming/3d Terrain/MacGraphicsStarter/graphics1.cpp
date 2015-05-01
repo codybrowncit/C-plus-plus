@@ -14,7 +14,8 @@ Person person;
 bool left_button_down = false;
 bool middle_button_down = false;
 bool right_button_down = false;
-
+double waterLevel =.5;
+double slope = .03;
 
 
 void SetTopView(int w, int h)
@@ -89,7 +90,7 @@ void display(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     double dt = GetDeltaTime();
-    terrain.draw();
+    terrain.draw(waterLevel, slope);
     if(terrain.current_view == terrain.perspective_view)
     {
         glEnable(GL_DEPTH_TEST);
@@ -109,12 +110,12 @@ void display(void)
         double z_level = 2.0;
         double x = person.get_x();
         double y = person.get_y();
-        double z = fmax(terrain.get_z(x, y), WATER_HEIGHT)+HOVER_HEIGHT;
+        double z = fmax(terrain.get_z(x, y, slope), WATER_HEIGHT)+HOVER_HEIGHT;
         double dx = person.get_dx();
         double dy = person.get_dy();
         double at_x = x + dx;
         double at_y = y + dy;
-        double at_z = fmax(terrain.get_z(at_x, at_y), WATER_HEIGHT)+HOVER_HEIGHT;
+        double at_z = fmax(terrain.get_z(at_x, at_y, slope), WATER_HEIGHT)+HOVER_HEIGHT;
         gluLookAt(x,y,z,  at_x, at_y, at_z,  0,0,1);
     }
     if (left_button_down)
@@ -142,6 +143,18 @@ void keyboard(unsigned char c, int x, int y)
 {
 	switch (c) 
 	{
+        case 'a':
+            slope+=.01;
+            break;
+        case 'b':
+            slope-=.01;
+            break;
+        case 'c':
+            waterLevel+=.01;
+            break;
+        case 'd':
+            waterLevel-=.01;
+            break;
         case 'r':
             terrain.current_view = terrain.eye_view;
             SetPerspectiveView(screen_x, screen_y);
@@ -154,7 +167,7 @@ void keyboard(unsigned char c, int x, int y)
             terrain.current_view = terrain.top_view;
             SetTopView(screen_x, screen_y);
             break;
-        case 'a':
+        case 'z':
             right_button_down = false;
             if (left_button_down == true) {
                 left_button_down = false;
@@ -164,7 +177,7 @@ void keyboard(unsigned char c, int x, int y)
             }
             middle_button_down = false;
             break;
-        case 'd':
+        case 'v':
             left_button_down = false;
             if (right_button_down == true) {
                 right_button_down = false;
@@ -188,9 +201,7 @@ void keyboard(unsigned char c, int x, int y)
 		case 27: // escape character means to quit the program
 			exit(0);
 			break;
-		case 'b':
-			// do something when 'b' character is hit.
-			break;
+
 		default:
 			return; // if we don't care, return without glutPostRedisplay()
 	}

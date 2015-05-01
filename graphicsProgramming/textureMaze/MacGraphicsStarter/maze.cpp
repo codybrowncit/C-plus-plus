@@ -72,10 +72,10 @@ void Maze::draw()
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texName[2]);
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0); glVertex3d(-1000, -1000, 1.5);
-    glTexCoord2f(1, 0); glVertex3d(-1000, 1000, 1.5);
-    glTexCoord2f(1, 1); glVertex3d(1000, 1000, 1.5);
-    glTexCoord2f(0, 1); glVertex3d(1000, -1000, 1.5);
+    glTexCoord2f(0, 0); glVertex3d(-10, -10, .5);
+    glTexCoord2f(1, 0); glVertex3d(-10, 10, .5);
+    glTexCoord2f(1, 1); glVertex3d(10, 10, .5);
+    glTexCoord2f(0, 1); glVertex3d(10, -10, .5);
     glEnd();
     glDisable(GL_TEXTURE_2D);
     }
@@ -84,9 +84,9 @@ void Maze::draw()
     glBindTexture(GL_TEXTURE_2D, texName[0]);
     glBegin(GL_QUADS);
     glTexCoord2f(0, 0); glVertex3d(0, 0, 0);
-    glTexCoord2f(1, 0); glVertex3d(0, ROW, 0);
-    glTexCoord2f(1, 1); glVertex3d(COL, ROW, 0);
-    glTexCoord2f(0, 1); glVertex3d(COL, 0, 0);
+    glTexCoord2f(10, 0); glVertex3d(0, ROW, 0);
+    glTexCoord2f(10, 10); glVertex3d(COL, ROW, 0);
+    glTexCoord2f(0, 10); glVertex3d(COL, 0, 0);
     glEnd();
     glDisable(GL_TEXTURE_2D);
     }
