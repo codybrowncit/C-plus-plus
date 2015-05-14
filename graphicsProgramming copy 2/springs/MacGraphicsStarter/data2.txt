@@ -1,0 +1,175 @@
+Particle
+100 300 0 0 2 
+false
+Particle 
+220 360 0 0 2 
+false
+Particle 
+215 300 0 0 2 
+false
+Particle
+200 200 0 0 2 
+false
+Particle
+200 105 0 0 2 
+false
+Particle
+233 330 0 0 2
+false
+Particle
+250 380 0 0 2 
+true
+Particle
+266 330 0 0 2 
+false
+Particle 
+280 360 0 0 2
+false
+Particle 
+285 300 0 0 2
+false
+Particle
+300 200 0 0 2
+false
+Particle
+300 100 0 0 2
+false
+Particle
+400 300 0 0 2
+false
+SpringForceDefault
+1 3 .2 1.5 
+SpringForceDefault
+3 4 .2 1.5 
+SpringForceDefault
+4 5 .2 1.5 
+SpringForceDefault 
+3 6 .2 1.5 
+SpringForceDefault
+6 2 .2 1.5 
+SpringForceDefault
+2 7 .2 1.5 
+SpringForceDefault
+7 9 .2 1.5 
+SpringForceDefault
+9 8 .2 1.5 
+SpringForceDefault
+8 10 .2 1.5
+SpringForceDefault
+10 11 .2 1.5
+SpringForceDefault
+11 12 .2 1.5
+SpringForceDefault
+10 13 .2 1.5
+SpringForceDefault
+3 10 .2 1.5 
+SpringForceDefault
+4 11 .2 1.5 
+SpringForceDefault
+6 8 .2 1.5 
+SpringForceDefault
+1 4 .2 1.5 
+SpringForceDefault
+11 13 .2 1.5 
+SpringForceDefault
+5 12 .2 1.5 
+SpringForceDefault
+5 11 .2 1.5 
+SpringForceDefault
+4 12 .2 1.5 
+SpringForceDefault
+3 11 .2 1.5 
+SpringForceDefault
+4 10 .2 1.5 
+SpringForceDefault
+6 10 .4 1.5 
+SpringForceDefault
+3 8 .4 1.5 
+SpringForceDefault
+2 9 .2 1.5 
+SpringForceDefault
+6 7 .2 1.5 
+SpringForceDefault
+7 8 .2 1.5 
+SpringForceDefault
+5 12 .2 1.5 
+SpringForceDefault
+5 11 .2 1.5 
+SpringForceDefault
+4 12 .2 1.5 
+SpringForceDefault
+3 11 .2 1.5 
+SpringForceDefault
+4 10 .2 1.5 
+SpringForceDefault
+6 10 .4 1.5 
+SpringForceDefault
+3 8 .4 1.5 
+SpringForceDefault
+2 9 .2 1.5 
+SpringForceDefault
+6 7 .2 1.5 
+SpringForceDefault
+7 8 .2 1.5 
+SpringForceDefault
+5 12 .2 1.5 
+SpringForceDefault
+5 11 .2 1.5 
+SpringForceDefault
+4 12 .2 1.5 
+SpringForceDefault
+3 11 .2 1.5 
+SpringForceDefault
+4 10 .2 1.5 
+SpringForceDefault
+6 10 .4 1.5 
+SpringForceDefault
+3 8 .4 1.5 
+SpringForceDefault
+2 9 .2 1.5 
+SpringForceDefault
+6 7 .2 1.5 
+SpringForceDefault
+7 8 .2 1.5 
+SpringForceDefault 
+5 12 .2 1.5 
+SpringForceDefault
+5 11 .2 1.5 
+SpringForceDefault
+4 12 .2 1.5 
+SpringForceDefault
+3 11 .2 1.5 
+SpringForceDefault
+4 10 .2 1.5 
+SpringForceDefault
+6 10 .4 1.5 
+SpringForceDefault
+3 8 .4 1.5 
+SpringForceDefault
+2 9 .2 1.5 
+SpringForceDefault
+6 7 .2 1.5 
+SpringForceDefault
+7 8 .2 1.5 
+SpringForceDefault
+5 12 .2 1.5 
+SpringForceDefault
+5 11 .2 1.5 
+SpringForceDefault
+4 12 .2 1.5 
+SpringForceDefault
+3 11 .2 1.5 
+SpringForceDefault
+4 10 .2 1.5 
+SpringForceDefault
+6 10 .4 1.5 
+SpringForceDefault
+3 8 .4 1.5 
+SpringForceDefault
+2 9 .2 1.5 
+SpringForceDefault
+6 7 .2 1.5 
+SpringForceDefault
+7 8 .2 1.5 
+GravityForce	
+0.0 -.80 
